@@ -4,13 +4,18 @@ import time
 def translateGame(wordsChapitre):
     option=""
 
-    while option!="X":
+    timeDelay = 0.3
+
+    while option!="x":
         print(" ")
         print("Chapitre 1 : Le Survivant")
         print("1.- Traduis cela")
         print("2.- Afficher le dictionnaire")
+        print("3.- Trouvez un mot")
         print(" ")
         option = input("Sélectionnez une option ou sortir(X): ")
+
+        option.lower()
 
         if option=="1":
 
@@ -42,7 +47,7 @@ def translateGame(wordsChapitre):
                 if isinstance(wordsChapitre[key], tuple):
                     if answer in wordsChapitre[key]:
                         print("C'est Correct!")
-                        time.sleep(0.5)
+                        time.sleep(timeDelay)
                         print(" ")
 
                         #Remove from the dictionary list the key from the correct value
@@ -52,13 +57,13 @@ def translateGame(wordsChapitre):
                     else:
                         print("C'est incorrect")
                         print("The correct answer is: ",wordsChapitre[key])
-                        time.sleep(0.5)
+                        time.sleep(timeDelay)
                         print(" ")
 
                 #Check if the answer is the value of that word in the dictionary
                 elif wordsChapitre[key] == answer:
                     print("C'est Correct!")
-                    time.sleep(0.5)
+                    time.sleep(timeDelay)
                     print(" ")
 
                     #Remove from the dictionary list the key from the correct value
@@ -68,7 +73,7 @@ def translateGame(wordsChapitre):
                 else:
                     print("C'est incorrect")
                     print("The correct answer is: ",wordsChapitre[key])
-                    time.sleep(0.5)
+                    time.sleep(timeDelay)
                     print(" ")
 
             print(" ")
@@ -80,3 +85,12 @@ def translateGame(wordsChapitre):
             for x in wordsChapitre:
                 print(x,": ",wordsChapitre[x])
             print(" ")
+        elif option=="3":
+            print("Entrez le mot: ")
+            wordSearch = input()
+            if wordSearch in wordsChapitre:
+                print(wordsChapitre[wordSearch])
+                time.sleep(3)
+            else:
+                print("Le mot n'est pas dans notre dictionnaire")
+                time.sleep(2)
